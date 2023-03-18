@@ -1,0 +1,17 @@
+
+version: "3.7"
+services:
+  app:
+    image: node
+    volumes:
+      - ".:/temp"
+    working_dir: "/temp"
+    entrypoint: "/bin/bash -c"
+    command:
+      - |
+        CI=true npm i -g pnpm && pnpm dev || (\
+          echo '⛔ `pnpm dev` failed, but the container is running...' && \
+          tail -f /dev/null \
+        )
+    ports:
+      - 3000:3000
