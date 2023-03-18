@@ -5,7 +5,7 @@ if "%1" == "install" (
 )
 
 if "%1" == "logs" (
-	docker-compose logs -f
+  docker-compose logs -f
 )
 
 if "%1" == "up" (
